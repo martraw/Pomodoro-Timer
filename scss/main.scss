@@ -1,17 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 100%;
+    font-family: 'Palanquin Dark', sans-serif;
 }
 
 .flex-main-container{
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    width: 80%;
-    height: 100px;
+    max-width: 65%;
+    min-height: 100vh;
     border: 1px solid red;
 
-    #header{
-        font-size: 10px
+
+}
+header{
+    display: block;
+    width: 100%;
+    height: 100px;
+    padding: 25px 0;
+    // border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        font-size: 4rem;
+    }
+}
+
+section{
+    display: block;
+    // height: 100px;
+    width: 100%;
+    // border: 1px solid yellow;
+    display: flex;
+    justify-content: center;
+
+}
+
+#settings-container{
+    padding: 25px 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    // justify-content: space-around;
+
+    // border: 1px solid orange;
+}
+
+.centering{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    // border: 1px solid black;
+}
+
+.setting-box{
+    padding: 0px 10px;
+    // border: 1px solid blue;
+    // height: 100px;
+    width: 200px;
+    font-size: 1.5rem;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div{
+        // border: 1px solid violet;
+    }
+
+    .setting-values{
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+
+        span{
+            padding: 5px 10px;
+        }
+    }
+
+}
+
+#status{
+    font-size: 4rem;
+    font-weight: bold;
+    padding: 20px 0;
+}
+
+#progress-bar{
+    width: 80%;
+    height: 50px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.description{
+    display: none;
+    padding: 20px;
+
+    p, ol li{
+        font-family: 'Oswald', sans-serif;
+    }
+
+}
+@media (max-width: 1000px) {
+
+    .flex-main-container{
+        max-width: 100%;
+    }
+    .centering{
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 625px) {
+    #settings-container{
+        padding: 0;
+    }
+
+    header h1{
+        font-size: 2.5rem;
+    }
+
+    .centering{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .setting-box{
+            width: 100%;
+        }
+    }
+    #progress-bar{
+        width: 100%;
     }
 }
