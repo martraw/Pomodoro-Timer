@@ -72,7 +72,7 @@ section{
     align-items: center;
 
     div{
-        border: 1px solid violet;
+        // border: 1px solid violet;
     }
 
     button{
@@ -104,6 +104,7 @@ section{
     width: 80%;
     display: flex;
     border-radius: 15px;
+    border: 3px solid black;
     overflow: hidden;
 
 
@@ -117,6 +118,10 @@ section{
 
     }
     p{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        left: 0;
         font-size: 2rem;
         font-weight: bold;
     }
