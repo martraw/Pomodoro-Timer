@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-main-container{
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    height: 100px;
+    border: 1px solid red;
+
+    #header{
+        font-size: 10px
+    }
+}

@@ -1,0 +1,22 @@
+/* line 1, scss/main.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* line 7, scss/main.scss */
+.flex-main-container {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  height: 100px;
+  border: 1px solid red;
+}
+
+/* line 14, scss/main.scss */
+.flex-main-container #header {
+  font-size: 10px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIqe1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi5mbGV4LW1haW4tY29udGFpbmVye1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgbWFyZ2luOiAwIGF1dG87XG4gICAgd2lkdGg6IDgwJTtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHJlZDtcblxuICAgICNoZWFkZXJ7XG4gICAgICAgIGZvbnQtc2l6ZTogMTBweFxuICAgIH1cbn1cbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsQUFBQSxDQUFDLENBQUE7RUFDRyxNQUFNLEVBQUUsQ0FBQztFQUNULE9BQU8sRUFBRSxDQUFDO0VBQ1YsVUFBVSxFQUFFLFVBQVU7Q0FDekI7OztBQUVELEFBQUEsb0JBQW9CLENBQUE7RUFDaEIsT0FBTyxFQUFFLElBQUk7RUFDYixNQUFNLEVBQUUsTUFBTTtFQUNkLEtBQUssRUFBRSxHQUFHO0VBQ1YsTUFBTSxFQUFFLEtBQUs7RUFDYixNQUFNLEVBQUUsYUFBYTtDQUt4Qjs7O0FBVkQsQUFPSSxvQkFQZ0IsQ0FPaEIsT0FBTyxDQUFBO0VBQ0gsU0FBUyxFQUFFLElBQ2Y7Q0FBRSJ9 */
