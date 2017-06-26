@@ -14,7 +14,7 @@ $(function(){
         tempBreakMin,
         tempBreakSec;
 
-    //UI elements
+    // UI elements
     let session = $("#sessionTime"),
         shortBreak = $("#shortBreakTime"),
         longBreak = $("#longBreakTime"),
@@ -33,6 +33,7 @@ $(function(){
     $("#sessionTimeAdd").on("click", () => {
         $(session.text(sessionTime)).fadeOut(100, () => {
             sessionTime++;
+            updateBarTime();
             $(session.text(sessionTime)).fadeIn(100);
         });
     });
@@ -43,6 +44,7 @@ $(function(){
             if (sessionTime < 1) {
                 sessionTime = 1;
             }
+            updateBarTime();
             $(session.text(sessionTime)).fadeIn(100);
         });
     });
@@ -83,8 +85,14 @@ $(function(){
         });
     });
 
+    function updateBarTime(event){
+        console.log(sessionTime);
+        progressBarTime.text(sessionTime + " : 00");
+    }
+
     progressBar.on("click", () => {
-        startStop();
+        // startStop();
+        timer()
     } )
 
     function timer(){
@@ -138,7 +146,7 @@ $(function(){
                     tempBreakMin -=1;
                 }
 
-                console.log("Odliczanie sekund: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
+                console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
                 // console.log("1 tempMin ", tempMin );
             }
 
@@ -198,7 +206,7 @@ $(function(){
         }
     }
 
-timer()
+// timer()
 
 
 
