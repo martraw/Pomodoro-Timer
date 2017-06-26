@@ -3,6 +3,7 @@ $(function(){
     let sessionTime = 1,
         shortBreakTime = 2,
         longBreakTime = 15,
+        started = false,
         isTimeRunning = false,
         resumed = false,
         isSession = true,
@@ -91,8 +92,8 @@ $(function(){
     }
 
     progressBar.on("click", () => {
-        // startStop();
-        timer()
+        startStop();
+        // timer()
     } )
 
     function timer(){
@@ -196,13 +197,18 @@ $(function(){
     };// Koniec funkcji timer()
 
     function startStop(){
-        resumed = true
-        if (isTimeRunning === true) {
-            clearInterval(mainInterval);
-            isTimeRunning = false;
-
-        } else {
+        if (!started) {
+            started = true;
             timer();
+        } else {
+            resumed = true
+            if (isTimeRunning === true) {
+                clearInterval(mainInterval);
+                isTimeRunning = false;
+
+            } else {
+                timer();
+            }
         }
     }
 
