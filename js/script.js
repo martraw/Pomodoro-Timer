@@ -28,7 +28,7 @@ $(function(){
     session.text(sessionTime);
     shortBreak.text(shortBreakTime);
     longBreak.text(longBreakTime);
-    progressBarTime.text(sessionTime + " : 00");
+    progressBarTime.text("Click me to Start/Pause");
 
     //Session time add and substract buttons functionality
     $("#sessionTimeAdd").on("click", () => {
@@ -151,7 +151,7 @@ $(function(){
                 // console.log("1 tempMin ", tempMin );
             }
 
-            // break
+            //Handles start of the next break
             if (isSession === true) {
                 if (currentMin < 0) {
                     isSession = false;
@@ -169,7 +169,7 @@ $(function(){
                 }
             }
 
-            //Next session
+            //Handles start of the next sessions
             else if (currentMin < 0) {
                 tempMin = 0;
                 tempSec = 0;
@@ -186,7 +186,7 @@ $(function(){
 
             }
 
-
+            //Handles proper time format on progress bar
             if (seconds < 10) {
                 progressBarTime.text(currentMin + " : 0" + seconds);
             } else {
