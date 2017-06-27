@@ -147,25 +147,34 @@ $(function(){
                     tempBreakMin -=1;
                 }
 
-                console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
-                // console.log("1 tempMin ", tempMin );
+                console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed );
             }
 
             //Handles start of the next break
             if (isSession === true) {
                 if (currentMin < 0) {
+                    completedSessions++;
                     isSession = false;
                     resumed = false;
-                    currentMin = shortBreakTime -1;
-                    tempBreakMin = currentMin;
-                    totalSec = shortBreakTime * 60;
-                    tempBreakSec = totalSec
-                    $("#status").text("BREAK");
+                    if (completedSessions % 4 === 0) {
+                        currentMin = longBreakTime -1;
+                        tempBreakMin = currentMin;
+                        totalSec = longBreakTime * 60;
+                        tempBreakSec = totalSec;
+                        $("#status").text("LONG BREAK");
+                        // completedSessions = 0;
+                    } else {
+                        currentMin = shortBreakTime -1;
+                        tempBreakMin = currentMin;
+                        totalSec = shortBreakTime * 60;
+                        tempBreakSec = totalSec
+                        $("#status").text("BREAK");
+                    }
                     progressBarWidth = 100;
                     progressBarWidth -= 100/totalSec;
                     progressBar.css("width", progressBarWidth + "%");
 
-                    console.log("Przerwa sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
+                    console.log("Przerwa sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed + "; completedSessions ", completedSessions);
                 }
             }
 
@@ -175,7 +184,7 @@ $(function(){
                 tempSec = 0;
                 resumed = false;
                 isSession = true;
-                $("#status").text("Session");
+                $("#status").html("Session #" + (completedSessions+1));
                 currentMin = sessionTime -1;
                 totalSec = sessionTime * 60;
                 tempMin = currentMin;
@@ -193,12 +202,13 @@ $(function(){
                 progressBarTime.text(currentMin + " : " + seconds);
             }
 
-        }, 200);// Koniec Interwału
+        }, 100);// Koniec Interwału
     };// Koniec funkcji timer()
 
     function startStop(){
         if (!started) {
             started = true;
+            $("#status").text("Session #" + (completedSessions+1));
             timer();
         } else {
             resumed = true
