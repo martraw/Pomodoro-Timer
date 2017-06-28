@@ -22,6 +22,7 @@ $(function(){
         progressBar = $(".main-bar"),
         progressBarWidth = 100,
         progressBarTime = $("#progress-bar-time");
+        descriptionQuestion = $("#descriptionQuestion")
 
 
     //Time settings display
@@ -29,6 +30,9 @@ $(function(){
     shortBreak.text(shortBreakTime);
     longBreak.text(longBreakTime);
     progressBarTime.text("Click me to Start/Pause");
+    descriptionQuestion.on("click", () => {
+        $(".descriptionText").fadeToggle()
+    })
 
     //Session time add and substract buttons functionality
     $("#sessionTimeAdd").on("click", () => {

@@ -29,7 +29,7 @@ header{
     align-items: center;
 
     h1{
-        font-size: 4rem;
+        font-size: 5rem;
     }
 }
 
@@ -98,6 +98,7 @@ section{
     font-size: 4rem;
     font-weight: bold;
     padding: 20px 0;
+    letter-spacing: 3px;
 }
 
 #progress-bar-container{
@@ -132,14 +133,47 @@ section{
 }
 
 .description{
-    display: none;
+    display: block;
     padding: 20px;
+    // border: 1px solid blue;
+    // font-family: 'Oswald', sans-serif;
 
-    p, ol li{
+
+    // p{
+    //     padding-top: 10px;
+    // }
+
+    // p, ol li{
+    //     font-family: 'Oswald', sans-serif;
+    //
+    //
+    // }
+
+    ol{
+        padding: 15px 0 0 40px;
+    }
+
+    .descriptionText{
+        display: none;
+        padding-top: 20px;
+        text-indent: 20px;
         font-family: 'Oswald', sans-serif;
     }
 
+    .descriptionText p:last-child{
+        text-align: center;
+    }
+
+    span{
+        color: red;
+        font-weight: bold;
+        letter-spacing: 4px;
+        font-size: 1.2rem;
+    }
 }
+
+
+
 @media (max-width: 1000px) {
 
     .flex-main-container{
