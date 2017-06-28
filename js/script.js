@@ -33,7 +33,14 @@ $(function(){
     longBreak.text(longBreakTime);
     progressBarTime.text("Click me to Start/Pause");
     descriptionQuestion.on("click", () => {
-        $(".descriptionText").fadeToggle()
+        if (descriptionQuestion.find("span").text() === "Click me") {
+            descriptionQuestion.find("span").text("Click me again to hide this information").fadeIn();
+            $(".descriptionText").fadeToggle();
+        } else {
+            descriptionQuestion.find("span").text("Click me");
+            $(".descriptionText").fadeToggle();
+        }
+
     })
 
     //Session time add and substract buttons functionality

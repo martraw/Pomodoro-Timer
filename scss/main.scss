@@ -6,6 +6,15 @@
     box-sizing: border-box;
     font-size: 100%;
     font-family: 'Palanquin Dark', sans-serif;
+    text-shadow: 0px 3px 6px rgba(150, 150, 150, 1);
+}
+
+body {
+    background: -moz-radial-gradient(center, ellipse cover, rgba(206,220,231,1) 0%, rgba(89,106,114,0.83) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(206,220,231,1) 0%,rgba(89,106,114,0.83) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(206,220,231,1) 0%,rgba(89,106,114,0.83) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#d4596a72',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
 .flex-main-container{
@@ -30,6 +39,19 @@ header{
 
     h1{
         font-size: 5rem;
+
+        // text-shadow: 0 1px 0 #ccc,
+        //        0 2px 0 #c9c9c9,
+        //        0 3px 0 #bbb,
+        //        0 4px 0 #b9b9b9,
+        //        0 5px 0 #aaa,
+        //        0 6px 1px rgba(0,0,0,.1),
+        //        0 0 5px rgba(0,0,0,.1),
+        //        0 1px 3px rgba(0,0,0,.3),
+        //        0 3px 5px rgba(0,0,0,.2),
+        //        0 5px 10px rgba(0,0,0,.25),
+        //        0 10px 10px rgba(0,0,0,.2),
+        //        0 20px 20px rgba(0,0,0,.15);
     }
 }
 
@@ -119,6 +141,7 @@ section{
 
     }
     p{
+        // text-shadow: none;
         position: absolute;
         text-align: center;
         width: 100%;
@@ -140,7 +163,8 @@ section{
         // border: 3px solid black;
         outline: none;
         background-color: white;
-        font-family: 'Palanquin Dark',
+        font-family: 'Palanquin Dark', sans-serif;
+        font-size: 1.2rem;
 
     }
 }
@@ -151,7 +175,8 @@ section{
 
 .description{
     display: block;
-    padding: 20px;
+    padding: 20px 20px 50px 20px;
+    // position: relative;
     // font-family: 'Oswald', sans-serif;
 
 
@@ -165,27 +190,45 @@ section{
     //
     // }
 
+    img{
+        // position: relative;
+        // top: 50px;
+        width: 150px;
+        height: auto;
+        float: right;
+    }
+
     ol{
-        padding: 15px 0 0 40px;
+        padding: 10px 0 0 40px;
     }
 
     .descriptionText{
+        text-shadow: none;
         display: none;
         padding-top: 20px;
         text-indent: 20px;
         font-family: 'Oswald', sans-serif;
+        text-align: justify;
+
+        span{
+            color: red;
+            font-weight: bold;
+            letter-spacing: 4px;
+            font-size: 1.4rem;
+            padding-top: 25px;
+        }
+    }
+
+    .descriptionText p:nth-child(2){
+        padding-top: 20px;
+        color: red;
     }
 
     .descriptionText p:last-child{
         text-align: center;
+        padding-top: 25px;
     }
 
-    span{
-        color: red;
-        font-weight: bold;
-        letter-spacing: 4px;
-        font-size: 1.2rem;
-    }
 }
 
 footer{
@@ -223,9 +266,12 @@ footer{
         padding: 0;
     }
 
-    header h1{
+    header {
+        height: 125px;
+        h1{
         font-size: 2.5rem;
     }
+}
 
     .centering{
         flex-direction: column;
