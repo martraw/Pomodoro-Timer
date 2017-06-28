@@ -128,6 +128,23 @@ section{
     }
 }
 
+#buttonBox {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+
+    button{
+        width: 100px;
+        height: 50px;
+        border-radius: 15px;
+        // border: 3px solid black;
+        outline: none;
+        background-color: white;
+        font-family: 'Palanquin Dark',
+
+    }
+}
+
 .clickable{
     cursor: pointer;
 }
@@ -135,7 +152,6 @@ section{
 .description{
     display: block;
     padding: 20px;
-    // border: 1px solid blue;
     // font-family: 'Oswald', sans-serif;
 
 
@@ -172,7 +188,23 @@ section{
     }
 }
 
-
+footer{
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    // border: 1px solid blue;
+    .icons {
+        display: inline-block;
+        border: 1px solid green;
+    }
+    img{
+        margin: 0 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
 
 @media (max-width: 1000px) {
 
