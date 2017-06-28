@@ -226,6 +226,24 @@ $(function(){
         }
     }
 
+    $("#buttonBox").find("button").on("click", function(){
+        clearInterval(mainInterval)
+        progressBarWidth = 100;
+        seconds = 60;
+        started = false,
+        isTimeRunning = false;
+        resumed = false;
+        isSession = true;
+        completedSessions = 0;
+        progressBarTime.text("Click me to Start/Pause");
+        progressBar.css("width", progressBarWidth + "%");
+        $("#status").html("Session");
+        tempMin;
+        tempSec;
+        tempBreakMin;
+        tempBreakSec;
+    })
+
     
 
 // timer()
