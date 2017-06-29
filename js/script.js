@@ -1,8 +1,8 @@
 $(function(){
     // Time settings
-    let sessionTime = 1,
-        shortBreakTime = 1,
-        longBreakTime = 1,
+    let sessionTime = 25,
+        shortBreakTime = 5,
+        longBreakTime = 20,
         started = false,
         isTimeRunning = false,
         resumed = false,
@@ -33,6 +33,7 @@ $(function(){
     shortBreak.text(shortBreakTime);
     longBreak.text(longBreakTime);
     progressBarTime.text("Click me to Start/Pause");
+
     descriptionQuestion.on("click", () => {
         if (descriptionQuestion.find("span").text() === "Click me") {
             descriptionQuestion.find("span").text("Click me again to hide this information").fadeIn();
@@ -105,54 +106,52 @@ $(function(){
         progressBarTime.text(sessionTime + " : 00");
     }
 
+    //Start or pause program
     progressBarContainer.on("click", () => {
         startStop();
-        // timer()
-    } )
+    })
 
+    //Main function
     function timer(){
         isTimeRunning = true;
-        // let currentMin = sessionTime -1;
-        // let totalSec = sessionTime * 60;
         let currentMin;
         let totalSec;
 
+        //Handles proper restart after pause during session
         if (resumed === false && isSession === true) {
             currentMin = sessionTime -1;
             totalSec = sessionTime * 60;
             tempMin = currentMin;
             tempSec = totalSec;
-            // console.log("Pierwszy if: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
-
         } else if (resumed === true && isSession === true) {
             currentMin = tempMin;
             totalSec = tempSec;
-            // console.log("Pierwszy else if: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed);
 
-        }   else if (resumed === false && isSession === false) {
+        //Handles proper restart after pause during break
+        } else if (resumed === false && isSession === false) {
             currentMin = tempBreakMin;
             totalSec = tempBreakSec;
-            console.log("Drugi else if: sessionTime",  sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
+            // console.log("Drugi else if: sessionTime",  sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
 
         }  else if (resumed === true && isSession === false) {
             currentMin = tempBreakMin
             totalSec = tempBreakSec
-            console.log("Trzeci else if: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
+            // console.log("Trzeci else if: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
         }
 
         console.log("currentMin: ",currentMin);
-
+        //Handles time countdown and session state
         mainInterval = setInterval(() => {
-            // console.log(progressBarWidth);
 
+            //Changes width of the progress bar
             progressBarWidth -= 100/totalSec;
             progressBar.css("width", progressBarWidth + "%");
-            // console.log("Diałam");
+            // console.log(progressBarWidth);
 
+            //Handles seconds countdown
             seconds -= 1;
             if (seconds < 0) {
                 seconds = 59;
-                // console.log("currentMin:  ",currentMin + " seconds", seconds);
                 currentMin -= 1;
                 if (tempMin > 0) {
                     tempMin -= 1;
@@ -161,7 +160,7 @@ $(function(){
                     tempBreakMin -=1;
                 }
 
-                console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed );
+                // console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed );
             }
 
             //Handles start of the next break
@@ -192,7 +191,7 @@ $(function(){
                     progressBarWidth -= 100/totalSec;
                     progressBar.css("width", progressBarWidth + "%");
 
-                    console.log("Przerwa sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed + "; completedSessions ", completedSessions);
+                    // console.log("Przerwa sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed + "; completedSessions ", completedSessions);
                 }
             }
 
@@ -225,6 +224,8 @@ $(function(){
         }, 100);// Koniec Interwału
     };// Koniec funkcji timer()
 
+
+    //Handles first start then pause and resume
     function startStop(){
         if (!started) {
             started = true;
@@ -235,13 +236,13 @@ $(function(){
             if (isTimeRunning === true) {
                 clearInterval(mainInterval);
                 isTimeRunning = false;
-
             } else {
                 timer();
             }
         }
     }
 
+    // Reset button
     $("#buttonBox").find("button").on("click", function(){
         clearInterval(mainInterval)
         progressBarWidth = 100;
@@ -260,11 +261,5 @@ $(function(){
         tempBreakMin;
         tempBreakSec;
     })
-
-
-
-// timer()
-
-
 
 })//Koniec
