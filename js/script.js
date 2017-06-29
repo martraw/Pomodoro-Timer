@@ -1,8 +1,8 @@
 $(function(){
     // Time settings
     let sessionTime = 1,
-        shortBreakTime = 2,
-        longBreakTime = 15,
+        shortBreakTime = 1,
+        longBreakTime = 1,
         started = false,
         isTimeRunning = false,
         resumed = false,
@@ -176,6 +176,7 @@ $(function(){
                         tempBreakSec = totalSec;
                         sound1.play();
                         $("#status").text("LONG BREAK");
+                        progressBar.css("backgroundColor", "#6ad3ff");
                         // completedSessions = 0;
                     } else {
                         currentMin = shortBreakTime -1;
@@ -184,6 +185,7 @@ $(function(){
                         tempBreakSec = totalSec;
                         sound1.play();
                         $("#status").text("BREAK");
+                        progressBar.css("backgroundColor", "#89ff00");
                     }
                     progressBarWidth = 100;
                     progressBarWidth -= 100/totalSec;
@@ -207,6 +209,7 @@ $(function(){
                 tempSec = totalSec;
                 progressBarWidth = 100;
                 progressBarWidth -= 100/totalSec;
+                progressBar.css("backgroundColor", "#ffeb3b");
                 progressBar.css("width", progressBarWidth + "%");
 
             }
@@ -247,6 +250,7 @@ $(function(){
         resumed = false;
         isSession = true;
         completedSessions = 0;
+        progressBar.css("backgroundColor", "#ffeb3b");
         progressBarTime.text("Click me to Start/Pause");
         progressBar.css("width", progressBarWidth + "%");
         $("#status").html("Session");
