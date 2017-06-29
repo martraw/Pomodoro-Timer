@@ -22,6 +22,7 @@ $(function(){
         shortBreak = $("#shortBreakTime"),
         longBreak = $("#longBreakTime"),
         progressBar = $(".main-bar"),
+        progressBarContainer = $("#progress-bar-container")
         progressBarWidth = 100,
         progressBarTime = $("#progress-bar-time");
         descriptionQuestion = $("#descriptionQuestion")
@@ -47,7 +48,7 @@ $(function(){
     $("#sessionTimeAdd").on("click", () => {
         $(session.text(sessionTime)).fadeOut(100, () => {
             sessionTime++;
-            updateBarTime();
+            // updateBarTime();
             $(session.text(sessionTime)).fadeIn(100);
         });
     });
@@ -58,7 +59,7 @@ $(function(){
             if (sessionTime < 1) {
                 sessionTime = 1;
             }
-            updateBarTime();
+            // updateBarTime();
             $(session.text(sessionTime)).fadeIn(100);
         });
     });
@@ -104,7 +105,7 @@ $(function(){
         progressBarTime.text(sessionTime + " : 00");
     }
 
-    progressBar.on("click", () => {
+    progressBarContainer.on("click", () => {
         startStop();
         // timer()
     } )
