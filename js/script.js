@@ -1,8 +1,8 @@
 $(function(){
     // Time settings
-    let sessionTime = 25,
-        shortBreakTime = 5,
-        longBreakTime = 20,
+    let sessionTime = 1,
+        shortBreakTime = 1,
+        longBreakTime = 1,
         started = false,
         isTimeRunning = false,
         resumed = false,
@@ -15,7 +15,8 @@ $(function(){
         tempBreakMin,
         tempBreakSec;
         sound1 = new Audio("./sounds/timeForBreak.ogg");
-        sound2 = new Audio("./sounds/timeToWork.ogg")
+        sound2 = new Audio("./sounds/timeToWork.ogg");
+        sound3 = new Audio("./sounds/long_break.mp3");
 
     // UI elements
     let session = $("#sessionTime"),
@@ -174,7 +175,7 @@ $(function(){
                         tempBreakMin = currentMin;
                         totalSec = longBreakTime * 60;
                         tempBreakSec = totalSec;
-                        sound1.play();
+                        sound3.play();
                         $("#status").text("LONG BREAK");
                         progressBar.css("backgroundColor", "#6ad3ff");
                         // completedSessions = 0;

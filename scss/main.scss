@@ -142,11 +142,10 @@ section{
 
     }
     p{
-        // text-shadow: none;
+        text-shadow: none;
         position: absolute;
         text-align: center;
-        // width: 50%;
-        // left: 0;
+        width: 100%;
         font-size: 1.8rem;
         font-weight: bold;
         top: 50%;
@@ -223,20 +222,9 @@ section{
 
 .description{
     display: block;
+    font-size: 1.2rem;
     padding: 20px 20px 50px 20px;
-    // position: relative;
-    // font-family: 'Oswald', sans-serif;
 
-
-    // p{
-    //     padding-top: 10px;
-    // }
-
-    // p, ol li{
-    //     font-family: 'Oswald', sans-serif;
-    //
-    //
-    // }
 
     img{
         // position: relative;
@@ -253,6 +241,7 @@ section{
     .descriptionText{
         text-shadow: none;
         display: none;
+        // font-size: 1.2rem;
         padding-top: 20px;
         text-indent: 20px;
         font-family: 'Oswald', sans-serif;
@@ -262,19 +251,21 @@ section{
             color: red;
             font-weight: bold;
             letter-spacing: 4px;
-            font-size: 1.4rem;
+
             padding-top: 25px;
         }
     }
 
     .descriptionText p:nth-child(2){
         padding-top: 20px;
-        color: red;
+        // color: red;
     }
 
     .descriptionText p:last-child{
         text-align: center;
+        font-size: 1.8rem;
         padding-top: 25px;
+        text-shadow : 0px 1px 2px #ffffff;
     }
 
 }
