@@ -1,8 +1,8 @@
 $(function(){
     // Time settings
-    let sessionTime = 1,
-        shortBreakTime = 1,
-        longBreakTime = 1,
+    let sessionTime = 30,
+        shortBreakTime = 5,
+        longBreakTime = 20,
         started = false,
         isTimeRunning = false,
         resumed = false,
@@ -222,7 +222,7 @@ $(function(){
                 progressBarTime.text(currentMin + " : " + seconds);
             }
 
-        }, 100);// Koniec Interwału
+        }, 1000);// Koniec Interwału
     };// Koniec funkcji timer()
 
 
