@@ -132,12 +132,10 @@ $(function(){
         } else if (resumed === false && isSession === false) {
             currentMin = tempBreakMin;
             totalSec = tempBreakSec;
-            // console.log("Drugi else if: sessionTime",  sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
 
         }  else if (resumed === true && isSession === false) {
             currentMin = tempBreakMin
             totalSec = tempBreakSec
-            // console.log("Trzeci else if: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; tempBreakMin " + tempBreakMin + "; tempBreakSec ", tempBreakSec +  "; resumed = ", resumed);
         }
 
         console.log("currentMin: ",currentMin);
@@ -160,8 +158,6 @@ $(function(){
                 if (tempBreakMin > 0) {
                     tempBreakMin -=1;
                 }
-
-                // console.log("Minęła minuta: sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed );
             }
 
             //Handles start of the next break
@@ -192,7 +188,6 @@ $(function(){
                     progressBarWidth -= 100/totalSec;
                     progressBar.css("width", progressBarWidth + "%");
 
-                    // console.log("Przerwa sessionTime", sessionTime + "; currentMin ", currentMin + "; totalSec ", totalSec + "; tempMin " + tempMin + "; tempSec ", tempSec + "; resumed = ", resumed + "; completedSessions ", completedSessions);
                 }
             }
 
@@ -222,8 +217,8 @@ $(function(){
                 progressBarTime.text(currentMin + " : " + seconds);
             }
 
-        }, 1000);// Koniec Interwału
-    };// Koniec funkcji timer()
+        }, 1000);// End of mainInterval
+    };// End of timer() function
 
 
     //Handles first start then pause and resume
