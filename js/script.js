@@ -1,6 +1,6 @@
 $(function(){
     // Time settings
-    let sessionTime = 30,
+    let sessionTime = 25,
         shortBreakTime = 5,
         longBreakTime = 20,
         started = false,
