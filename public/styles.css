@@ -1,0 +1,216 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);@import url(https://fonts.googleapis.com/css?family=Palanquin+Dark);* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: 'Palanquin Dark', sans-serif;
+  text-shadow: 0px 3px 6px #969696; }
+
+body {
+  background: -moz-radial-gradient(center, ellipse cover, #cedce7 0%, rgba(89, 106, 114, 0.83) 100%);
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #cedce7 0%, rgba(89, 106, 114, 0.83) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #cedce7 0%, rgba(89, 106, 114, 0.83) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#d4596a72',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+
+.flex-main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 64%;
+  min-height: 100vh; }
+
+header {
+  display: block;
+  width: 100%;
+  height: 200px;
+  padding: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  header h1 {
+    font-size: 5rem; }
+
+section {
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+
+#settings-container {
+  padding: 25px 0;
+  display: flex;
+  align-content: center;
+  justify-content: center; }
+
+.centering {
+  display: flex;
+  justify-content: space-around;
+  width: 80%; }
+
+.setting-box {
+  padding: 0px 10px;
+  width: 200px;
+  font-size: 1.5rem;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .setting-box button {
+    width: 30px;
+    background: none;
+    border: none;
+    outline: none; }
+  .setting-box .setting-values {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem; }
+    .setting-box .setting-values span {
+      padding: 5px 10px; }
+
+#status {
+  font-size: 4rem;
+  font-weight: bold;
+  padding: 20px 0;
+  letter-spacing: 3px; }
+
+#progress-bar-container {
+  width: 80%;
+  display: flex;
+  border-radius: 15px;
+  border: 3px solid black;
+  overflow: hidden;
+  position: relative; }
+  #progress-bar-container .main-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #ffeb3b; }
+  #progress-bar-container p {
+    text-shadow: none;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+#buttonBox {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center; }
+  #buttonBox .resetButton {
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+    background: -moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+    background-color: #ffffff;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: none; }
+  #buttonBox .resetButton:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+    background: -moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+    background-color: #f6f6f6;
+    outline: none; }
+  #buttonBox .resetButton:active {
+    position: relative;
+    top: 1px; }
+
+.clickable {
+  cursor: pointer; }
+
+.description {
+  display: block;
+  font-size: 1.2rem;
+  padding: 20px 20px 50px 20px; }
+  .description img {
+    width: 150px;
+    height: auto;
+    float: right; }
+  .description ol {
+    padding: 10px 0 0 40px; }
+  .description .descriptionText {
+    text-shadow: none;
+    display: none;
+    padding-top: 20px;
+    text-indent: 20px;
+    font-family: 'Oswald', sans-serif;
+    text-align: justify; }
+    .description .descriptionText span {
+      color: red;
+      font-weight: bold;
+      letter-spacing: 4px;
+      padding-top: 25px; }
+  .description .descriptionText p:nth-child(2) {
+    padding-top: 20px; }
+  .description .descriptionText p:last-child {
+    text-align: center;
+    font-size: 1.8rem;
+    padding-top: 25px;
+    text-shadow: 0px 1px 2px #ffffff; }
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center; }
+  footer .icons {
+    display: inline-block;
+    border: 1px solid green; }
+  footer img {
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; }
+
+@media (max-width: 1000px) {
+  .flex-main-container {
+    max-width: 100%; }
+  .centering {
+    width: 100%; } }
+
+@media (max-width: 625px) {
+  #settings-container {
+    padding: 0; }
+  header {
+    height: 125px; }
+    header h1 {
+      font-size: 2.5rem; }
+  .centering {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .centering .setting-box {
+      width: 100%; }
+  #progress-bar-container {
+    width: 100%; } }
