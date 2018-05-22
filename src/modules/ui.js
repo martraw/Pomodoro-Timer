@@ -1,6 +1,6 @@
-class UI {
+const uiClass = class {
   constructor() {
-    this.session = document.querySelector('#sessionTime'),
+    this.sessionTime = document.querySelector('#sessionTime'),
     this.shortBreak = document.querySelector('#shortBreakTime'),
     this.longBreak = document.querySelector('#longBreakTime'),
     this.progressBar = document.querySelector('.mani-bar'),
@@ -8,17 +8,16 @@ class UI {
     this.progressBarWidth = 100,
     this.progressBarTime = document.querySelector('#progress-bar-time'),
     this.descriptionQuestion = document.querySelector('#descriptionQuestion'),
+    this.resetButton = document.querySelector('.resetButton'),
     this.sound1 = new Audio('./sounds/timeForBreak.ogg'),
     this.sound2 = new Audio('./sounds/timeToWork.ogg'),
     this.sound3 = new Audio('./sounds/long_break.mp3')
-    
   }
 
   updateUiElement(element, value) {
     element.textContent = value
   }
+
 }
 
-const ui = new UI();
-
-export default ui;
+export default uiClass;

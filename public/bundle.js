@@ -79,7 +79,31 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_main_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconsole.log('1234');\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_main_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _modules_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/ui */ \"./src/modules/ui.js\");\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\n\n\n\n\nconsole.log('1234');\nconsole.log(_modules_ui__WEBPACK_IMPORTED_MODULE_1__[\"default\"].session);\nconsole.log(_modules_timer__WEBPACK_IMPORTED_MODULE_2__[\"default\"].sessionTime);\n\nconsole.log(document.querySelector('#sessionTime'));\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ }),
+
+/***/ "./src/modules/timer.js":
+/*!******************************!*\
+  !*** ./src/modules/timer.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nclass Timer {\n  constructor() {\n    this.sessionTime = 25\n  }\n}\n\nconst timer = new Timer()\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (timer);\n\n//# sourceURL=webpack:///./src/modules/timer.js?");
+
+/***/ }),
+
+/***/ "./src/modules/ui.js":
+/*!***************************!*\
+  !*** ./src/modules/ui.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nclass UI {\n  constructor() {\n    this.session = document.querySelector('#sessionTime')\n  }\n\n  showElem(){\n    console.log(\"aaa \" + document.querySelector('#sessionTime'));\n    \n  }\n}\n\nconst ui = new UI();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ui);\n\n//# sourceURL=webpack:///./src/modules/ui.js?");
 
 /***/ }),
 
