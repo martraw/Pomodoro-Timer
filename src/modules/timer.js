@@ -1,14 +1,15 @@
 const timerClass = class {
-  constructor(ui) {
+  constructor() {
     this.startTime = null,
       this.endTime = null,
-      this.sessionTime = 1,
+      this.sessionTime = 5,
       this.shortBreak = 5,
       this.longBreak = 20,
       this.isRunning = false,
       this.completedSessions = 0,
       this.interval = null,
-      this.oneSec = 100
+      this.oneSec = 1000,
+      this.ui = null
   }
 
   start() {
@@ -28,9 +29,7 @@ const timerClass = class {
     if (this.isRunning) {
       if (this.startTime < this.endTime) {
         this.interval = setTimeout(() => {
-          console.log(`setTimeout: isRunning: ${this.isRunning} ${this.completedSessions} StartTime ${this.startTime} EndTime ${this.endTime} ${this.startTime < this.endTime ? 'true' : 'false'}`);
-          this.startTime += this.oneSec
-          this.completedSessions++;
+          this.updateTime()
           this.countDown();
         }, this.oneSec)
       } else {
@@ -61,10 +60,16 @@ const timerClass = class {
     this.completedSessions = 0;
     console.log(`reseting`);
   }
-
+  
   updateTime() {
-    console.log('Weeeeeeee!');
+    this.startTime = this.startTime + this.oneSec;
+    
+    const remainingTime = new Date();
+    remainingTime.setTime(this.endTime - this.startTime);
+   this.ui.displayTime(remainingTime)
+    console.log(this);
   }
+
 }
 
 export default timerClass;

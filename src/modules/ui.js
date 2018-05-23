@@ -17,9 +17,14 @@ const uiClass = class {
 
   updateUiElement(element, value) {
     element.textContent = value
-    this.timer.updateTime()
   }
   
+  displayTime(time) {
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+    this.progressBarTime.textContent = `${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}`: seconds }`
+  }
+
 
 
 
