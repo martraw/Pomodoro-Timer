@@ -7,6 +7,7 @@ const timerClass = class {
       this.longBreak = 3,
       this.isRunning = false,
       this.state = 'session',
+      this.stateDuration = 0,
       this.completedSessions = 0,
       this.interval = null,
       this.oneSec = 1000,
@@ -17,6 +18,7 @@ const timerClass = class {
     if (this.state === 'session') {
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
+      this.stateDuration = this.endTime - this.startTime;
       if (!this.isRunning) {
         this.isRunning = true
       }
@@ -38,7 +40,7 @@ const timerClass = class {
         if (this.state === 'session') {
           this.completedSessions++;
           this.state = 'break'
-          this.startBreak();
+          // this.startBreak();
         } else {
           this.state = 'session';
           this.start()
@@ -75,8 +77,8 @@ const timerClass = class {
 
     const remainingTime = new Date();
     remainingTime.setTime(this.endTime - this.startTime);
-    this.ui.displayTime(remainingTime)
-    console.log(this);
+    this.ui.displayTime(remainingTime);
+     this.ui.animateProgresBar(((this.endTime - this.startTime)*100)/this.stateDuration);
   }
 
   startBreak() {
@@ -87,6 +89,7 @@ const timerClass = class {
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.longBreak * 60) * this.oneSec);
     }
+    this.stateDuration = this.endTime - this.startTime;
     this.countDown()
 
   }

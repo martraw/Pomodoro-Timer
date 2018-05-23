@@ -3,7 +3,7 @@ const uiClass = class {
     this.sessionTime = document.querySelector('#sessionTime'),
     this.shortBreak = document.querySelector('#shortBreakTime'),
     this.longBreak = document.querySelector('#longBreakTime'),
-    this.progressBar = document.querySelector('.mani-bar'),
+    this.progressBar = document.querySelector('.main-bar'),
     this.progressBarContainer = document.querySelector('#progress-bar-container'),
     this.progressBarWidth = 100,
     this.progressBarTime = document.querySelector('#progress-bar-time'),
@@ -23,6 +23,10 @@ const uiClass = class {
     const minutes = time.getMinutes();
     const seconds = time.getSeconds();
     this.progressBarTime.textContent = `${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}`: seconds }`
+  }
+
+  animateProgresBar(percentage) {
+    this.progressBar.style.width = `${percentage}%`;
   }
 
 
