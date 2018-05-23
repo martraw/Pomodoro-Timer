@@ -1,5 +1,5 @@
 const uiClass = class {
-  constructor() {
+  constructor(timer) {
     this.sessionTime = document.querySelector('#sessionTime'),
     this.shortBreak = document.querySelector('#shortBreakTime'),
     this.longBreak = document.querySelector('#longBreakTime'),
@@ -12,11 +12,16 @@ const uiClass = class {
     this.sound1 = new Audio('./sounds/timeForBreak.ogg'),
     this.sound2 = new Audio('./sounds/timeToWork.ogg'),
     this.sound3 = new Audio('./sounds/long_break.mp3')
+    
   }
 
   updateUiElement(element, value) {
     element.textContent = value
+    this.timer.updateTime()
   }
+  
+
+
 
 }
 
