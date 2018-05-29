@@ -6,7 +6,8 @@ import timerClass from './modules/timer';
   class Pomodoro {
   
     addListeners() {
-      ui.progressBarContainer.addEventListener('click', timer.start.bind(timer));
+      document.querySelector('#progress-bar-container').addEventListener('click',  this.start);
+      
       ui.resetButton.addEventListener('click', this.reset);
   
       document.querySelector('#sessionTimeAdd').addEventListener('click', (e) => this.changeTimeValue(e, 'sessionTime'));
@@ -34,23 +35,31 @@ import timerClass from './modules/timer';
       }
     }
 
+    start() {
+       timer.start();
+      }
+
+    pauseResume() {
+      this.pauseResume().bind(timer);
+    }
+
     reset() {
-      timer.reset()
+      timer.reset();
     }
 
     init() {
-      this.addListeners()
+      this.addListeners();
     }
   }
   
-  const ui = new uiClass()
-  const timer = new timerClass()
+  const ui = new uiClass();
+  const timer = new timerClass();
   const app = new Pomodoro();
   ui.app = app;
   ui.timer = timer;
   timer.ui = ui;
   timer.app = app;
 
-  app.init()
+  app.init();
 })();
 
