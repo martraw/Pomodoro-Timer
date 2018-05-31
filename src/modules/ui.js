@@ -34,7 +34,7 @@ const uiClass = class {
     this.sessionStatus.textContent = status;
   }
 
-
+ 
 
 }
 

@@ -47,12 +47,15 @@ import timerClass from './modules/timer';
       timer.reset();
       ui.progressBarTime.textContent = `Click here to Start/Pause`;
       ui.animateProgresBar(100);
-      ui.displayStatus('Do it. NOW!!!')
+      ui.displayStatus('Do it. NOW!!!');
     }
 
     init() {
       this.addListeners();
       ui.progressBarTime.textContent = `Click here to Start/Pause`;
+      ui.sessionTime.textContent = timer.sessionTime;
+      ui.shortBreak.textContent = timer.shortBreak;
+      ui.longBreak.textContent = timer.longBreak;
     }
   }
   

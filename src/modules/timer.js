@@ -2,9 +2,9 @@ const timerClass = class {
   constructor() {
     this.startTime = null,
       this.endTime = null,
-      this.sessionTime = 0.3,
-      this.shortBreak = 0.5,
-      this.longBreak = 1,
+      this.sessionTime = 20,
+      this.shortBreak = 5,
+      this.longBreak = 15,
       this.isRunning = false,
       this.state = '',
       this.stateDuration = 0,
@@ -95,6 +95,7 @@ const timerClass = class {
     this.endTime = null
     this.isRunning = false;
     this.completedSessions = 0;
+    this.state = '';
     console.log(`reseting`);
   }
 
