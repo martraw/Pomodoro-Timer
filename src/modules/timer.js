@@ -2,9 +2,9 @@ const timerClass = class {
   constructor() {
     this.startTime = null,
       this.endTime = null,
-      this.sessionTime = 1,
-      this.shortBreak = 1,
-      this.longBreak = 1,
+      this.sessionTime = 25,
+      this.shortBreak = 5,
+      this.longBreak = 30,
       this.isRunning = false,
       this.state = '',
       this.stateDuration = 0,
@@ -22,9 +22,11 @@ const timerClass = class {
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
       this.stateDuration = this.endTime - this.startTime;
       this.isRunning = true;
+      this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`);
+      this.updateTime()
       this.ui.colorProgressBar(this.state);
       this.countDown();
-     } else {
+    } else {
       this.pauseResume();
     }
   }
@@ -40,6 +42,8 @@ const timerClass = class {
       if (!this.isRunning) {
         this.isRunning = true;
       }
+      this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`);
+      this.updateTime()
       this.ui.colorProgressBar(this.state);
       this.countDown();
     } else {
@@ -65,7 +69,7 @@ const timerClass = class {
           this.startSession();
         }
       }
-    } 
+    }
   }
 
   //Pause/Resume function
@@ -76,6 +80,7 @@ const timerClass = class {
       this.ui.displayState(`Pause`);
     } else {
       this.isRunning = true;
+      this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`);
       this.countDown();
     }
   }
@@ -83,6 +88,7 @@ const timerClass = class {
   //Reset timer to initial state
   reset() {
     clearTimeout(this.interval);
+    this.interval = null;
     this.startTime = null;
     this.endTime = null;
     this.isRunning = false;
@@ -117,6 +123,7 @@ const timerClass = class {
       this.ui.playSound(this.state);
     }
     this.stateDuration = this.endTime - this.startTime;
+    this.updateTime()
     this.countDown();
 
   }
