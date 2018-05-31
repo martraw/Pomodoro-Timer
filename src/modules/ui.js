@@ -3,6 +3,7 @@ const uiClass = class {
     this.sessionTime = document.querySelector('#sessionTime'),
     this.shortBreak = document.querySelector('#shortBreakTime'),
     this.longBreak = document.querySelector('#longBreakTime'),
+    this.sessionStatus = document.querySelector('#status'),
     this.progressBar = document.querySelector('.main-bar'),
     this.progressBarContainer = document.querySelector('#progress-bar-container'),
     this.progressBarWidth = 100,
@@ -29,6 +30,9 @@ const uiClass = class {
     this.progressBar.style.width = `${percentage}%`;
   }
 
+  displayStatus(status) {
+    this.sessionStatus.textContent = status;
+  }
 
 
 

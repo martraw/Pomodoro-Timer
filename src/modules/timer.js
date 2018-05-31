@@ -17,7 +17,7 @@ const timerClass = class {
   start() {
     // console.log(`Strat 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
     if (this.state === '' && this.startTime === null) {
-      this.state = 'session'
+      this.state = 'Session'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
       this.stateDuration = this.endTime - this.startTime;
@@ -31,7 +31,7 @@ const timerClass = class {
   }
 
   startSession() {
-    if (this.state === 'session') {
+    if (this.state === 'Session') {
       console.log('click');
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
@@ -45,21 +45,6 @@ const timerClass = class {
     }
   }
 
-  // start() {
-  //   console.log('click');
-  //   if (this.state === 'session') {
-  //     this.startTime = new Date().getTime();
-  //     this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
-  //     this.stateDuration = this.endTime - this.startTime;
-  //     if (!this.isRunning) {
-  //       this.isRunning = true
-  //     }
-  //     this.countDown()
-  //   } else {
-  //     return
-  //   }
-  // }
-
   countDown() {
     if (this.isRunning) {
       if (this.startTime < this.endTime) {
@@ -69,14 +54,14 @@ const timerClass = class {
         }, 100) //this.oneSec)
       } else {
         console.log(`Finished`);
-        if (this.state === 'session') {
+        if (this.state === 'Session') {
 
           this.completedSessions++;
-          this.state = 'break'
+          // this.state = 'Break'
           console.log(`Countdown 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
           this.startBreak();
         } else {
-          this.state = 'session';
+          this.state = 'Session';
           console.log(`Countdown 2 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
 
 
@@ -94,7 +79,7 @@ const timerClass = class {
 
       this.isRunning = false;
       clearTimeout(this.interval);
-
+      this.ui.displayStatus(`Pause`)
       console.log(`pauseResume 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
     } else {
 
@@ -120,13 +105,16 @@ const timerClass = class {
     remainingTime.setTime(this.endTime - this.startTime);
     this.ui.displayTime(remainingTime);
     this.ui.animateProgresBar(((this.endTime - this.startTime) * 100) / this.stateDuration);
+    this.ui.displayStatus(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`)
   }
 
   startBreak() {
     if (this.completedSessions % 4 !== 0) {
+      this.state = 'Break'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.shortBreak * 60) * this.oneSec);
     } else {
+      this.state = 'Long Break'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.longBreak * 60) * this.oneSec);
     }

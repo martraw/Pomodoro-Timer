@@ -46,6 +46,8 @@ import timerClass from './modules/timer';
     reset() {
       timer.reset();
       ui.progressBarTime.textContent = `Click here to Start/Pause`;
+      ui.animateProgresBar(100);
+      ui.displayStatus('Do it. NOW!!!')
     }
 
     init() {
