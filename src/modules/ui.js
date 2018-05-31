@@ -44,8 +44,15 @@ const uiClass = class {
     this.sessionStatus.textContent = state;
   }
 
- 
-
+  playSound(state) {
+    if (state === 'Session') {
+      this.sound2.play()
+    } else if (state === 'Break') {
+      this.sound1.play()
+    } else if (state === 'Long Break') {
+      this.sound3.play()
+    }
+  }
 }
 
 export default uiClass;

@@ -33,6 +33,7 @@ const timerClass = class {
 
   startSession() {
     if (this.state === 'Session') {
+      this.ui.playSound(this.state);
       console.log('click');
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
@@ -117,11 +118,13 @@ const timerClass = class {
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.shortBreak * 60) * this.oneSec);
       this.ui.colorProgressBar(this.state);
+      this.ui.playSound(this.state);
     } else {
       this.state = 'Long Break'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.longBreak * 60) * this.oneSec);
       this.ui.colorProgressBar(this.state);
+      this.ui.playSound(this.state);
     }
     this.stateDuration = this.endTime - this.startTime;
     this.countDown()
