@@ -26,12 +26,22 @@ const uiClass = class {
     this.progressBarTime.textContent = `${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}`: seconds }`
   }
 
-  animateProgresBar(percentage) {
+  animateProgressBar(percentage) {
     this.progressBar.style.width = `${percentage}%`;
   }
 
-  displayStatus(status) {
-    this.sessionStatus.textContent = status;
+  colorProgressBar(state) {
+    if (state === 'Session') {
+      this.progressBar.style.backgroundColor = '#ffeb3b';
+    } else if (state === 'Break') {
+      this.progressBar.style.backgroundColor = '#89ff00';
+    } else if (state === 'Long Break') {
+      this.progressBar.style.backgroundColor = '#6ad3ff';
+    }
+  }
+
+  displayState(state) {
+    this.sessionStatus.textContent = state;
   }
 
  

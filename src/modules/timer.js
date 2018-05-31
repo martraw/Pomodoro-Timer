@@ -2,9 +2,9 @@ const timerClass = class {
   constructor() {
     this.startTime = null,
       this.endTime = null,
-      this.sessionTime = 20,
-      this.shortBreak = 5,
-      this.longBreak = 15,
+      this.sessionTime = 1,
+      this.shortBreak = 1,
+      this.longBreak = 1,
       this.isRunning = false,
       this.state = '',
       this.stateDuration = 0,
@@ -23,6 +23,7 @@ const timerClass = class {
       this.stateDuration = this.endTime - this.startTime;
       this.isRunning = true
       console.log(`Strat 2 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
+      this.ui.colorProgressBar(this.state);
       this.countDown()
      } else {
 
@@ -39,6 +40,7 @@ const timerClass = class {
       if (!this.isRunning) {
         this.isRunning = true
       }
+      this.ui.colorProgressBar(this.state);
       this.countDown()
     } else {
       return
@@ -79,7 +81,7 @@ const timerClass = class {
 
       this.isRunning = false;
       clearTimeout(this.interval);
-      this.ui.displayStatus(`Pause`)
+      this.ui.displayState(`Pause`)
       console.log(`pauseResume 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
     } else {
 
@@ -105,8 +107,8 @@ const timerClass = class {
     const remainingTime = new Date();
     remainingTime.setTime(this.endTime - this.startTime);
     this.ui.displayTime(remainingTime);
-    this.ui.animateProgresBar(((this.endTime - this.startTime) * 100) / this.stateDuration);
-    this.ui.displayStatus(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`)
+    this.ui.animateProgressBar(((this.endTime - this.startTime) * 100) / this.stateDuration);
+    this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`)
   }
 
   startBreak() {
@@ -114,10 +116,12 @@ const timerClass = class {
       this.state = 'Break'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.shortBreak * 60) * this.oneSec);
+      this.ui.colorProgressBar(this.state);
     } else {
       this.state = 'Long Break'
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.longBreak * 60) * this.oneSec);
+      this.ui.colorProgressBar(this.state);
     }
     this.stateDuration = this.endTime - this.startTime;
     this.countDown()
