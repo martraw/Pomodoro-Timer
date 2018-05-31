@@ -19,7 +19,7 @@ import timerClass from './modules/timer';
       document.querySelector('#longBreakTimeAdd').addEventListener('click', (e) => this.changeTimeValue(e, 'longBreak'));
       document.querySelector('#longBreakTimeSub').addEventListener('click', (e) => this.changeTimeValue(e, 'longBreak'));
     }
-    //
+    //Handle change of the appropriate time value (Sesion/Break/Long Break) on click at +/- element
     changeTimeValue(e, timeValue) {
       if (e.target.textContent === '+') {
         timer[timeValue]++;
@@ -34,15 +34,17 @@ import timerClass from './modules/timer';
         console.log(timer[timeValue]);
       }
     }
-
+    //Start pomodoro on click at progress bar
     start() {
        timer.start();
       }
-
+    
+    //Pause/Resume countdown on click at progress bar
     pauseResume() {
       this.pauseResume().bind(timer);
     }
 
+    //Reset 
     reset() {
       timer.reset();
       ui.progressBarTime.textContent = `Click here to Start/Pause`;
@@ -51,6 +53,7 @@ import timerClass from './modules/timer';
       ui.colorProgressBar('Session');
     }
 
+    //Initialise event listeners and set default values
     init() {
       this.addListeners();
       ui.progressBarTime.textContent = `Click here to Start/Pause`;
@@ -60,6 +63,7 @@ import timerClass from './modules/timer';
     }
   }
   
+  //Instantiate objects
   const ui = new uiClass();
   const timer = new timerClass();
   const app = new Pomodoro();

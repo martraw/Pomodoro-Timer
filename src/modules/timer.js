@@ -14,23 +14,22 @@ const timerClass = class {
       this.ui = null
   }
 
+  //Handel first session start
   start() {
-    // console.log(`Strat 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
     if (this.state === '' && this.startTime === null) {
-      this.state = 'Session'
+      this.state = 'Session';
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
       this.stateDuration = this.endTime - this.startTime;
-      this.isRunning = true
-      console.log(`Strat 2 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
+      this.isRunning = true;
       this.ui.colorProgressBar(this.state);
-      this.countDown()
+      this.countDown();
      } else {
-
-      this.pauseResume()
+      this.pauseResume();
     }
   }
 
+  //Handle new session start
   startSession() {
     if (this.state === 'Session') {
       this.ui.playSound(this.state);
@@ -39,95 +38,86 @@ const timerClass = class {
       this.endTime = this.startTime + ((this.sessionTime * 60) * this.oneSec);
       this.stateDuration = this.endTime - this.startTime;
       if (!this.isRunning) {
-        this.isRunning = true
+        this.isRunning = true;
       }
       this.ui.colorProgressBar(this.state);
-      this.countDown()
+      this.countDown();
     } else {
-      return
+      return;
     }
   }
 
+  //Main countdown function
   countDown() {
     if (this.isRunning) {
       if (this.startTime < this.endTime) {
         this.interval = setTimeout(() => {
           this.updateTime();
           this.countDown();
-        }, 100) //this.oneSec)
+        }, this.oneSec);
       } else {
         console.log(`Finished`);
         if (this.state === 'Session') {
-
           this.completedSessions++;
-          // this.state = 'Break'
-          console.log(`Countdown 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
           this.startBreak();
         } else {
           this.state = 'Session';
-          console.log(`Countdown 2 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
-
-
-          this.startSession()
+          this.startSession();
         }
       }
-    } else {
-      console.log(`Paused`);
-    }
-
+    } 
   }
 
+  //Pause/Resume function
   pauseResume() {
     if (this.isRunning) {
-
       this.isRunning = false;
       clearTimeout(this.interval);
-      this.ui.displayState(`Pause`)
-      console.log(`pauseResume 1 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
+      this.ui.displayState(`Pause`);
     } else {
-
       this.isRunning = true;
       this.countDown();
-      console.log(`pauseResume 2 ${this.startTime} ${this.endTime} isRunning: ${this.isRunning} state: ${this.state} ${this.completedSessions}`);
     }
   }
 
+  //Reset timer to initial state
   reset() {
     clearTimeout(this.interval);
     this.startTime = null;
-    this.endTime = null
+    this.endTime = null;
     this.isRunning = false;
     this.completedSessions = 0;
     this.state = '';
     console.log(`reseting`);
   }
 
+  //Update remaining time, progress bar width and state 
   updateTime() {
     this.startTime = this.startTime + this.oneSec;
-
     const remainingTime = new Date();
     remainingTime.setTime(this.endTime - this.startTime);
     this.ui.displayTime(remainingTime);
     this.ui.animateProgressBar(((this.endTime - this.startTime) * 100) / this.stateDuration);
-    this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`)
+    this.ui.displayState(`${this.state === 'Session' ? `${this.state} #${this.completedSessions + 1}` : this.state }`);
   }
 
+  //Handle breaks
   startBreak() {
     if (this.completedSessions % 4 !== 0) {
-      this.state = 'Break'
+      this.state = 'Break';
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.shortBreak * 60) * this.oneSec);
       this.ui.colorProgressBar(this.state);
       this.ui.playSound(this.state);
     } else {
-      this.state = 'Long Break'
+      this.state = 'Long Break';
       this.startTime = new Date().getTime();
       this.endTime = this.startTime + ((this.longBreak * 60) * this.oneSec);
       this.ui.colorProgressBar(this.state);
       this.ui.playSound(this.state);
     }
     this.stateDuration = this.endTime - this.startTime;
-    this.countDown()
+    this.countDown();
 
   }
 
