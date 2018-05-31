@@ -45,10 +45,12 @@ import timerClass from './modules/timer';
 
     reset() {
       timer.reset();
+      ui.progressBarTime.textContent = `Click here to Start/Pause`;
     }
 
     init() {
       this.addListeners();
+      ui.progressBarTime.textContent = `Click here to Start/Pause`;
     }
   }
   
