@@ -4,20 +4,22 @@ import timerClass from './modules/timer';
 
 (function () {
   class Pomodoro {
-  
+
     addListeners() {
-      document.querySelector('#progress-bar-container').addEventListener('click',  this.start);
-      
-      ui.resetButton.addEventListener('click', this.reset);
-  
+      ui.progressBarContainer.addEventListener('click', this.start);
+
       document.querySelector('#sessionTimeAdd').addEventListener('click', (e) => this.changeTimeValue(e, 'sessionTime'));
       document.querySelector('#sessionTimeSub').addEventListener('click', (e) => this.changeTimeValue(e, 'sessionTime'));
-  
+
       document.querySelector('#shortBreakTimeAdd').addEventListener('click', (e) => this.changeTimeValue(e, 'shortBreak'));
       document.querySelector('#shortBreakTimeSub').addEventListener('click', (e) => this.changeTimeValue(e, 'shortBreak'));
-  
+
       document.querySelector('#longBreakTimeAdd').addEventListener('click', (e) => this.changeTimeValue(e, 'longBreak'));
       document.querySelector('#longBreakTimeSub').addEventListener('click', (e) => this.changeTimeValue(e, 'longBreak'));
+
+      ui.resetButton.addEventListener('click', this.reset);
+
+      ui.descriptionQuestion.addEventListener('click', this.showDescription);
     }
     //Handle change of the appropriate time value (Sesion/Break/Long Break) on click at +/- element
     changeTimeValue(e, timeValue) {
@@ -36,9 +38,9 @@ import timerClass from './modules/timer';
     }
     //Start pomodoro on click at progress bar
     start() {
-       timer.start();
-      }
-    
+      timer.start();
+    }
+
     //Pause/Resume countdown on click at progress bar
     pauseResume() {
       this.pauseResume().bind(timer);
@@ -53,6 +55,11 @@ import timerClass from './modules/timer';
       ui.colorProgressBar('Session');
     }
 
+    //Show and hide Pomodoro technique description block
+    showDescription() {
+      ui.toggleDescription();
+    }
+
     //Initialise event listeners and set default values
     init() {
       this.addListeners();
@@ -62,7 +69,7 @@ import timerClass from './modules/timer';
       ui.longBreak.textContent = timer.longBreak;
     }
   }
-  
+
   //Instantiate objects
   const ui = new uiClass();
   const timer = new timerClass();
@@ -74,4 +81,3 @@ import timerClass from './modules/timer';
 
   app.init();
 })();
-

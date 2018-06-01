@@ -9,6 +9,7 @@ const uiClass = class {
     this.progressBarWidth = 100,
     this.progressBarTime = document.querySelector('#progress-bar-time'),
     this.descriptionQuestion = document.querySelector('#descriptionQuestion'),
+    this.descriptionText = document.querySelector('.descriptionText'),
     this.resetButton = document.querySelector('.resetButton'),
     this.sound1 = new Audio('./sounds/timeForBreak.ogg'),
     this.sound2 = new Audio('./sounds/timeToWork.ogg'),
@@ -56,6 +57,15 @@ const uiClass = class {
       this.sound1.play();
     } else if (state === 'Long Break') {
       this.sound3.play();
+    }
+  }
+
+  //Show and hide Pomodoro technique description block
+  toggleDescription() {
+    if (this.descriptionText.style.display === '' || this.descriptionText.style.display === 'none') {
+      this.descriptionText.style.display = 'block';
+    } else {
+      this.descriptionText.style.display = 'none';
     }
   }
 }
