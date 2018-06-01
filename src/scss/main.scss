@@ -23,16 +23,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', end
     margin: 0 auto;
     max-width: 64%;
     min-height: 100vh;
-    // border: 1px solid red;
-
-
 }
+
 header{
     display: block;
     width: 100%;
     height: 200px;
     padding: 25px 0;
-    // border: 1px solid green;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,9 +54,7 @@ header{
 
 section{
     display: block;
-    // height: 100px;
     width: 100%;
-    // border: 1px solid yellow;
     display: flex;
     justify-content: center;
 
@@ -70,22 +65,16 @@ section{
     display: flex;
     align-content: center;
     justify-content: center;
-    // justify-content: space-around;
-
-    // border: 1px solid orange;
 }
 
 .centering{
     display: flex;
     justify-content: space-around;
     width: 80%;
-    // border: 1px solid black;
 }
 
 .setting-box{
     padding: 0px 10px;
-    // border: 1px solid blue;
-    // height: 100px;
     width: 200px;
     font-size: 1.5rem;
     display: inline-block;
@@ -93,9 +82,6 @@ section{
     justify-content: center;
     align-items: center;
 
-    div{
-        // border: 1px solid violet;
-    }
 
     button{
         width: 30px;
@@ -159,18 +145,6 @@ section{
     display: flex;
     justify-content: center;
 
-    // button{
-    //     width: 100px;
-    //     height: 50px;
-    //     border-radius: 15px;
-    //     // border: 3px solid black;
-    //     outline: none;
-    //     background-color: white;
-    //     font-family: 'Palanquin Dark', sans-serif;
-    //     font-size: 1.2rem;
-    //
-    // }
-
     .resetButton {
     	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -225,10 +199,12 @@ section{
     font-size: 1.2rem;
     padding: 20px 20px 50px 20px;
 
+    #descriptionQuestion{
+        cursor: pointer;
+    }
+
 
     img{
-        // position: relative;
-        // top: 50px;
         width: 150px;
         height: auto;
         float: right;
@@ -258,7 +234,6 @@ section{
 
     .descriptionText p:nth-child(2){
         padding-top: 20px;
-        // color: red;
     }
 
     .descriptionText p:last-child{
@@ -275,7 +250,6 @@ footer{
     bottom: 0px;
     display: flex;
     justify-content: center;
-    // border: 1px solid blue;
     .icons {
         display: inline-block;
         border: 1px solid green;
