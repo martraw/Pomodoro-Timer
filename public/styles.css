@@ -153,6 +153,8 @@ section {
   display: block;
   font-size: 1.2rem;
   padding: 20px 20px 50px 20px; }
+  .description #descriptionQuestion {
+    cursor: pointer; }
   .description img {
     width: 150px;
     height: auto;
